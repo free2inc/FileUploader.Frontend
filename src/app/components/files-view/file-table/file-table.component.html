@@ -1,0 +1,29 @@
+<div *ngIf="allFilesCount > 0">
+  <div class="mt-5" >
+    <h3>File extension: {{extension}}</h3>
+
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">Size</th>
+        <th class="text-center">Uploaded Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let file of files | paginate: {itemsPerPage: itemsPerPage, currentPage: page, totalItems: allFilesCount, id: paginationId}">
+        <th scope="row">{{ file.name }}</th>
+        <td class="text-center">{{ file.fileSize }}</td>
+        <td class="text-center">{{ file.createdDate | date}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+  <pagination-controls  class="text-center" (pageChange)="getAllFiles((page = $event))" id="{{paginationId}}"></pagination-controls>
+  <div class="mb-5"></div>
+</div>
+
+

@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>File upload</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="mt-5">
+      <input type="file" class="" id="fileInput" (change)="onFileSelected($event)">
+    </div>
+
+    <div class="mt-3">
+      <button type="submit" class="btn btn-outline-secondary " [disabled]="file == null">Upload
+      </button>
+    </div>
+    <div class="mt-5">
+      <p *ngIf="notValidFileExtension" class="text-danger">File extension ({{fileExtension}}) is not valid</p>
+      <p *ngIf="notValidFileSize" class="text-danger">File size can not be more than {{fileConfig.validFileSize}} kB</p>
+      <p *ngIf="isUploadedToServer" class="text-success">File uploaded</p>
+    </div>
+
+  </form>
+</div>

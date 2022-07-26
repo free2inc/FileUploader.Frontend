@@ -1,0 +1,5 @@
+<div class="container">
+  <div *ngFor="let extension of extensionList; let i = index">
+      <app-file-table [extension]=extension [paginationId]=i.toString()></app-file-table>
+  </div>
+</div>
